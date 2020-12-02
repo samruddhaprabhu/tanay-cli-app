@@ -1,0 +1,56 @@
+var readlineSync = require("readline-sync");
+
+var userName = readlineSync.question("What's your name? ");
+let score = 0;
+
+console.log("Welcome " + userName);
+
+//data of high score
+var highScores = [
+  {
+    name: "Sam",
+    score: 10
+  },
+
+  {
+    name: "Asd",
+    score: 9
+  },
+
+  {
+    name: "aw",
+    score: 7
+  },
+]
+
+//quiz function
+function Quiz(question, answer){
+  var userAnswer = readlineSync.question(question);
+
+  if (userAnswer.toUpperCase() === answer.toUpperCase()){
+    console.log("right answer!");
+    score = score + 1;
+  } else {
+    console.log("wrong!");
+  }
+
+  console.log("current score: ", score);
+  console.log("- - - - - - - - - -");
+};
+
+//array of objects
+var questions = [{
+  question: "WHich is the capital of india? ",
+  answer: "New Delhi"
+}, {
+  question: "Which is the capital of karntaka? ",
+  answer: "Bangalore"
+}];
+
+//loop
+for(var i=0; i<questions.length; i++) {
+  var currentQuestion = questions[i];
+  Quiz(currentQuestion.question, currentQuestion.answer);
+}
+
+console.log("You Scored: ", score);
